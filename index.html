@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML Form</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+        form {
+            width: 400px;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        fieldset {
+            border: 1px solid black;
+            padding: 10px;
+            margin: 0;
+        }
+        legend {
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        input[type="text"],
+        input[type="email"],
+        input[type="password"],
+        textarea,
+        input[type="date"] {
+            width: calc(100% - 20px);
+            padding: 8px;
+            margin-bottom: 10px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        .gender-group {
+            margin-bottom: 10px;
+        }
+        .gender-group label {
+            display: inline-block;
+            margin-left: 10px;
+        }
+        input[type="radio"] {
+            margin-left: 10px;
+            vertical-align: middle;
+        }
+        input[type="submit"] {
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        input[type="reset"] {
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-left: 10px;
+            background-color: #f44336;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <form id="miFormulario">
+        <fieldset>
+            <legend>User Personal Information</legend>
+            <label for="name">Enter your full name:</label>
+            <input type="text" id="name" name="name"  />
+            <label for="email">Enter your email:</label>
+            <input type="email" id="email" name="email" placeholder="ejemplo@correo" />
+            <label for="password">Enter your password:</label>
+            <input type="password" id="password" name="pass"  />
+            <label for="confirmPassword">Confirm your password:</label>
+            <input type="password" id="confirmPassword" name="confirmPass"  />
+            <label>Enter your gender:</label>
+            <div class="gender-group">
+                <input type="radio" name="gender" value="male" id="male"  />
+                <label for="male">Male</label>
+                <input type="radio" name="gender" value="female" id="female" />
+                <label for="female">Female</label>
+            </div>
+            <label for="dob">Enter your Date of Birth:</label>
+            <input type="date" id="dob" name="dob"  />
+            <label for="address">Enter your Address:</label>
+            <textarea id="address" name="address" ></textarea>
+            <label for="phone-number">Enter your Phone Number:</label>
+            <input type="text" id="phone-number" name="phone-number" placeholder="1234" />
+            <input type="submit" value="Submit" />
+            <input type="reset" value="Reset" />
+        </fieldset>
+    </form>
+    <script>
+        document.getElementById("miFormulario").addEventListener("submit", function(event) {
+            event.preventDefault(); // Evita el envío del formulario
+            
+            let name = document.getElementById("name").value;
+            let email = document.getElementById("email").value;
+            let password = document.getElementById("password").value;
+            let confirmPassword = document.getElementById("confirmPassword").value;
+            let genderElements = document.getElementsByName("gender");
+            let dob = document.getElementById("dob").value;
+            let address = document.getElementById("address").value;
+            let phoneNumber = document.getElementById("phone-number").value;
+            
+            if (name === "" || email === "" || password === "" || confirmPassword === "" || dob === "" || address === "" || phoneNumber === "") {
+                alert("Error: Por favor, completa todos los campos obligatorios.");
+                return false; // Detiene la ejecución aquí
+            }
+
+            if (password !== confirmPassword) {
+                alert("Error: Las contraseñas no coinciden.");
+                return false; // Detiene la ejecución aquí
+            }
+
+            if (!Array.from(genderElements).some(radio => radio.checked)) {
+                alert("Error: Por favor, selecciona tu género.");
+                return false; // Detiene la ejecución aquí
+            }
+
+            if (!/^\S+@\S+$/.test(email)) {
+                alert("Error: Por favor, ingresa un correo electrónico válido.");
+                return false; // Detiene la ejecución aquí
+            }
+
+            // Validar que el phonenUmber solo tenga digitos y no otros caracteres
+            if (!/^\d+$/.test(phoneNumber)) {
+                alert("Error: El número de teléfono solo debe contener dígitos.");
+                return false; // Detiene la ejecución aquí
+            }
+
+            if (new Date(dob) >= new Date()) {
+                alert("Error: La fecha de nacimiento debe ser una fecha pasada.");
+                return false; // Detiene la ejecución aquí
+            } if (new Date(2026, 0, 1) < new Date(dob) < new Date()) {
+                alert("Enserio naciste en el 2026?");
+            }
+
+            // Aquí puedes agregar la lógica para manejar los datos del formulario
+            alert("Formulario enviado!");
+        });
+        document.getElementById("miFormulario").addEventListener("reset", function() {
+            // Aquí puedes agregar lógica adicional si es necesario al resetear el formulario
+            alert("Formulario reseteado!");
+        });
+    </script>
+</body>
+</html>
