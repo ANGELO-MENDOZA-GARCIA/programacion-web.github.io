@@ -1,0 +1,216 @@
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    padding: 20px;
+    background-color: #f0f0f0;
+    gap: 20px;
+}
+form {
+    width: 400px;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+fieldset {
+    border: 1px solid black;
+    padding: 10px;
+    margin: 0;
+}
+legend {
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+label {
+    display: block;
+    margin-bottom: 5px;
+}
+input[type="text"],
+input[type="email"],
+input[type="password"],
+textarea,
+input[type="date"] {
+    width: calc(100% - 20px);
+    padding: 8px;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+.gender-group {
+    margin-bottom: 10px;
+}
+.gender-group label {
+    display: inline-block;
+    margin-left: 10px;
+}
+input[type="radio"] {
+    margin-left: 10px;
+    vertical-align: middle;
+}
+.button-group {
+    display: flex;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+input[type="submit"],
+input[type="reset"],
+button[type="autofill"] {
+    flex: 1;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    border: none;
+    font-size: 14px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+input[type="submit"] {
+    background-color: #4CAF50;
+    color: white;
+}
+
+input[type="submit"]:hover {
+    background-color: #45a049;
+}
+
+input[type="reset"] {
+    background-color: #f44336;
+    color: white;
+}
+
+input[type="reset"]:hover {
+    background-color: #da190b;
+}
+
+button[type="autofill"] {
+    background-color: #008CBA;
+    color: white;
+}
+
+button[type="autofill"]:hover {
+    background-color: #007399;
+}
+
+/* ============================================
+   ESTILOS PARA SECCIONES DINÁMICAS
+   ============================================ */
+
+.contenedor-seccion {
+    width: 400px;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.contenedor-seccion h2 {
+    margin-top: 0;
+    color: #333;
+    border-bottom: 2px solid #ddd;
+    padding-bottom: 10px;
+}
+
+.contenedor-seccion button {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    background-color: #FF9800;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.contenedor-seccion button:hover {
+    background-color: #E68900;
+}
+
+.contenedor-seccion button:active {
+    transform: scale(0.98);
+}
+
+/* ============================================
+   CONTENIDO DINÁMICO
+   ============================================ */
+
+.contenido-dinamico {
+    background-color: #f9f9f9;
+    border-left: 4px solid #4CAF50;
+    padding: 15px;
+    border-radius: 4px;
+}
+
+.contenido-dinamico h3 {
+    margin-top: 0;
+    color: #4CAF50;
+}
+
+.contenido-dinamico ul {
+    padding-left: 20px;
+    margin: 10px 0;
+}
+
+.contenido-dinamico li {
+    margin-bottom: 8px;
+    color: #555;
+}
+
+/* ============================================
+   CONTENIDO API
+   ============================================ */
+
+.contenido-api {
+    background-color: #f0f8ff;
+    border-left: 4px solid #008CBA;
+    padding: 15px;
+    border-radius: 4px;
+}
+
+.contenido-api h3 {
+    margin-top: 0;
+    color: #008CBA;
+    font-size: 20px;
+}
+
+.contenido-api p {
+    margin: 10px 0;
+    color: #555;
+    line-height: 1.6;
+}
+
+.contenido-api strong {
+    color: #333;
+}
+
+.contenido-api img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin: 15px 0;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.link-api {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 10px 20px;
+    background-color: #008CBA;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.link-api:hover {
+    background-color: #007399;
+}
