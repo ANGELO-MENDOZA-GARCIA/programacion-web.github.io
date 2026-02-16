@@ -217,11 +217,24 @@ async function insertarHTMLDinamico() {
         
         const datos = await respuesta.json();
         
-        // 2. Extraemos lo mínimo: el título del primer juego del arreglo
-        const primerJuego = datos[0].title;
+        // 2. Extraemos los primeros 5 juegos para mostrar
+        const juegos = datos.slice(0, 5);
         
-        contenedor.innerHTML = `<h1>Juego encontrado: ${primerJuego}</h1>`;
-        console.log("¡Éxito! Datos recibidos:", datos[0]);
+        // 3. Construimos el HTML para mostrar los juegos
+        let html = "<h3>Juegos Gratis Destacados</h3><ul>";
+        juegos.forEach(juego => {
+            html += `
+                <li>
+                    <strong>${juego.title}</strong> - ${juego.genre} (${juego.platform})
+                    <br>
+                    <a href="${juego.game_url}" target="_blank">Ver más</a>
+                </li>
+            `;
+        });
+        html += "</ul>";
+        
+        contenedor.innerHTML = html;
+        console.log("Datos de la API obtenidos y mostrados exitosamente");
 
     } catch (error) {
         contenedor.innerHTML = `
