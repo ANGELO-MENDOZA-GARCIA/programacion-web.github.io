@@ -168,33 +168,22 @@ document.getElementById("miFormulario").addEventListener("reset", function() {
 async function insertarHTMLDinamico() {
     const contenedor = document.getElementById("contenido-html");
     
-    // Simular una carga asincrónica
-    contenedor.innerHTML = "<p>Cargando contenido...</p>";
+    contenedor.insertAdjacentHTML(
+        "beforeend",
+        `<p><em>Cargando contenido... ${new Date().toLocaleTimeString()}</em></p>`
+    );
     
-    try {
-        // Simular una operación asincrónica (delay de 1.5 segundos)
-        await new Promise(resolve => setTimeout(resolve, 1500));
-        
-        // Insertar el contenido HTML
-        const html = `
-            <div class="contenido-dinamico">
-                <h3>Contenido Insertado Dinámicamente</h3>
-                <p>Este contenido fue insertado usando una función <strong>async/await</strong>.</p>
-                <ul>
-                    <li>✓ Primera característica</li>
-                    <li>✓ Segunda característica</li>
-                    <li>✓ Tercera característica</li>
-                </ul>
-                <p><em>Tiemstapo de inserción: ${new Date().toLocaleTimeString()}</em></p>
-            </div>
-        `;
-        
-        contenedor.innerHTML = html;
-        console.log("Contenido HTML insertado exitosamente");
-    } catch (error) {
-        contenedor.innerHTML = `<p style="color: red;">Error al insertar contenido: ${error.message}</p>`;
-        console.error("Error:", error);
-    }
+    setTimeout(() => {
+        contenedor.insertAdjacentHTML(
+            "beforeend",
+            `<p><em>Callback... ${new Date().toLocaleTimeString()}</em></p>`
+        );
+    }, 2000);
+
+    contenedor.insertAdjacentHTML(
+        "beforeend",
+        `<p><em>Fin del programa... ${new Date().toLocaleTimeString()}</em></p>`
+    );
 }
 /**
  * Obtiene datos de un juego específico de la API de FreeToGame y los muestra
